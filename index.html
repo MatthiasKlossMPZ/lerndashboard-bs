@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 100px;           /* mehr Luft → Text sitzt besser mittig */
+    min-height: 100px;          
     margin-bottom: 20px;
     width: 100%;
 }
@@ -36,10 +36,10 @@
 }
 
 .logo-left .logo-svg {
-    height: 75px;                /* ← deine gewünschte Größe – hier anpassen */
+    height: 75px;                
     width: auto;
-    object-fit: contain;         /* wichtig für PNG */
-    flex-shrink: 0;              /* verhindert Zusammendrücken */
+    object-fit: contain;         
+    flex-shrink: 0;             
 }
 
 .logo-right {
@@ -48,10 +48,10 @@
 }
 
 .logo-right svg {
-    height: 78px !important;     /* etwas kleiner als 80px → besserer Ausgleich */
+    height: 78px !important;     
     width: auto;
     position: relative;
-    top: 4px;                    /* Feinjustierung nach unten – 3–6 px meist perfekt */
+    top: 4px;                    
 }
 
 /* Mobile Anpassung */
@@ -64,7 +64,7 @@
     }
 
     .logo-left .logo-svg {
-        height: 70px;            /* kleiner auf Handy */
+        height: 70px;           
     }
 
     .logo-right svg {
@@ -185,7 +185,7 @@
     border-radius: 8px;
     max-height: 220px;
     overflow-y: auto;
-    z-index: 20000;               /* ← das ist der entscheidende Wert */
+    z-index: 20000;               
     box-shadow: 0 10px 30px rgba(0,0,0,0.22);
     display: none;
 }
@@ -194,7 +194,7 @@
     padding: 9px 14px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
-    font-size: 13.5px !important;   /* minimal kleiner + super lesbar */
+    font-size: 13.5px !important;   
     line-height: 1.4;
     transition: background 0.15s ease;
 }
@@ -642,7 +642,7 @@ dialog#confirmDeleteDialog button[value="delete"]:hover {
 }
 
 /* ============================================================= */
-/* FINALER ZUSTAND – alles perfekt, auch Dark Mode + Innenränder */
+/* FINAL incl. Dark Mode + Innenränder */
 /* ============================================================= */
 
 /* 1. Grundstil aller Buttons */
@@ -706,7 +706,7 @@ dialog#confirmDeleteDialog button[value="delete"]:hover {
 }
 
 /* ============================================================= */
-/* ROTER RAHMEN – DIE LETZTE, 100 % SICHERE VERSION (2025)     */
+/*                   ROTER RAHMEN                                */
 /* ============================================================= */
 
 .filtered-export.active {
@@ -935,7 +935,7 @@ dialog#confirmDeleteDialog button[value="delete"]:hover {
 
 <script defer>
 // ===========================
-// ASYNCHRONES DATENLADEN + APP-START (2025-SICHER)
+// ASYNCHRONES DATENLADEN + APP-START
 // ===========================
 window.resources = [];
 window.undoStack = [];
@@ -997,7 +997,7 @@ function updateCurrentFilters() {
 }
 
 // === GLOBALE VARIABLEN (EINZIGER ORT!) ===
-const VERSION = '1.1.40';
+const VERSION = '1.1.41';
 const REPO_PATH = (() => {
   if (location.hostname === 'localhost' || 
       location.hostname === '127.0.0.1' || 
@@ -1019,7 +1019,7 @@ let allowReload = false;
 let newServiceWorker = null;
 
 // === DROPDOWN-DATEN ===
-const subjects = ['Agrarwirtschaft','Bautechnik','Berufsvorbereitung','Elektrotechnik','Ernährung und Hauswirtschaft','Fahrzeugtechnik','Farbtechnik und Raumgestaltung','Gesundheit und Pflege','Holztechnik','Informationstechnik','Labor- und Prozesstechnik','Medientechnik','Metalltechnik','Seefahrt und Fischwirtschaft','Wirtschaft und Verwaltung'];
+const subjects = ['Agrarwirtschaft','Bautechnik','Berufsvorbereitung','Elektrotechnik','Ernährung und Hauswirtschaft','Fahrzeugtechnik','Farbtechnik und Raumgestaltung','Gesundheit und Pflege','Holztechnik','Informationstechnik','Labor- und Prozesstechnik','Medientechnik','Metalltechnik','Seefahrt und Fischwirtschaft','Sozialwesen','Wirtschaft und Verwaltung'];
 const grades = ['Berufsschule','Berufliches Gymnasium','Berufsvorbereitung','Fachoberschule','Fachschule','Höhere Berufsfachschule','offene Suche'];
 const competences = [
   'Suchen, Verarbeiten und Aufbewahren',
