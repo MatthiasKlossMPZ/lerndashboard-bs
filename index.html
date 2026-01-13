@@ -821,7 +821,7 @@ dialog#confirmDeleteDialog button[value="delete"]:hover {
                     <select id="filterSubject"><option value="">Alle</option></select>
                 </div>
                 <div class="filter-group">
-                    <label>Klasse</label>
+                    <label>Ausbildungsform</label>
                     <select id="filterGrade"><option value="">Alle</option></select>
                 </div>
                 <div class="filter-group">
@@ -874,7 +874,7 @@ dialog#confirmDeleteDialog button[value="delete"]:hover {
                 <h4 class="export-group-title" id="filterExportTitle">Filter-Exporte</h4>
                 <div class="btn-row">
                     <button class="btn csv filtered-export" onclick="exportCSV()" 
-                            title="Exportiert gefilterte Ressourcen als CSV (Fach, Klasse, Tool, etc.)"type="button">CSV</button>
+                            title="Exportiert gefilterte Ressourcen als CSV (Fach, Ausbildungsform, Tool, etc.)"type="button">CSV</button>
                     <button class="btn pdf filtered-export" onclick="exportPDF()" 
                             title="Exportiert gefilterte Ressourcen als PDF (nur sichtbare Einträge)"type="button">PDF</button>
                     <button class="btn matrix filtered-export" onclick="exportMatrixCSV()" 
@@ -1911,8 +1911,8 @@ document.getElementById('matrixPdfBtn')?.addEventListener('click', exportMatrixP
 
 function exportTemplate() {
     const template = [
-        'Thema,Unterrichtsfach,Klassenstufe,Kompetenzbereich,Niveaustufe,Digitales Hilfsmittel,Beschreibung',
-        'Beispiel: Klimawandel,Geografie,Klasse 7,Analysieren und Reflektieren,Niveaustufe 3,Google Earth,"Beschreibung des Einsatzes..."'
+        'Thema,Unterrichtsfach,Ausbildungsform,Kompetenzbereich,Niveaustufe,Digitales Hilfsmittel,Beschreibung',
+        'Beispiel: Klimawandel,Geografie,Berufsschule,Analysieren und Reflektieren,Niveaustufe 3,Google Earth,"Beschreibung des Einsatzes..."'
     ].join('\n');
 
     const csvBlob = new Blob(['\uFEFF' + template], { type: 'text/csv;charset=utf-8;' });
@@ -1929,7 +1929,7 @@ function exportCSV() {
         return;
     }
 
-    const COLUMNS = ['Thema', 'Unterrichtsfach', 'Klassenstufe', 'Kompetenzbereich', 'Niveaustufe', 'Digitales_Hilfsmittel', 'Beschreibung'];
+    const COLUMNS = ['Thema', 'Unterrichtsfach', 'Ausbildungsform', 'Kompetenzbereich', 'Niveaustufe', 'Digitales_Hilfsmittel', 'Beschreibung'];
     const csvContent = filtered.map(r => [
         `"${(r.topic || '').replace(/"/g, '""')}"`,
         `"${(r.subject || '')}"`,
@@ -2254,7 +2254,7 @@ async function exportMatrixPDF() {
                           (!currentFilters.level || l === currentFilters.level);
 
             if (match) {
-                matrix[c][l].push(`${topic}\nKlasse ${g}${r.tool ? ` – ${r.tool}` : ''}`);
+                matrix[c][l].push(`${topic}\nAusbildungsform ${g}${r.tool ? ` – ${r.tool}` : ''}`);
             }
         });
 
@@ -2612,7 +2612,7 @@ function autoBackup() {
 
     // CSV generieren & downloaden – FRÜHER AUSLÖSEN (nach 300ms, während Animation läuft)
     setTimeout(() => {
-        const headers = ['Thema','Unterrichtsfach','Klassenstufe','Kompetenzbereich','Niveaustufe','Digitales_Hilfsmittel','Beschreibung'];
+        const headers = ['Thema','Unterrichtsfach','Ausbildungsform','Kompetenzbereich','Niveaustufe','Digitales_Hilfsmittel','Beschreibung'];
         const csv = [
             headers.join(','),
             ...allResources.map(r => [
@@ -2737,7 +2737,7 @@ function printOptimized() {
                     color: #333;
                 ">
                     <strong>Fach:</strong> ${escapeHtml(r.subject || '–')} | 
-                    <strong>Klasse:</strong> ${escapeHtml(r.grade || '–')} | 
+                    <strong>Ausbildungsform:</strong> ${escapeHtml(r.grade || '–')} | 
                     <strong>Kompetenz:</strong> ${escapeHtml(r.competence || '–')}
                 </p>
                 <p style="
@@ -2928,17 +2928,17 @@ function performImport(data) {
         const thema = (entry['Thema'] || entry['Thema'] || '').trim();
         const beschreibung = (entry['Beschreibung'] || entry['Beschreibung'] || '').trim();
         const fach = (entry['Unterrichtsfach'] || entry['Unterrichtsfach'] || '').trim();
-        const klasse = (entry['Klassenstufe'] || entry['Klassenstufe'] || '').trim();
+        const ausbildungsform = (entry['Ausbildungsform'] || entry['Ausbildungsform'] || '').trim();
         const kompetenz = (entry['Kompetenzbereich'] || entry['Kompetenzbereich'] || '').trim();
         const niveau = (entry['Niveaustufe'] || entry['Niveaustufe'] || '').trim();
         const tool = (entry['Digitales_Hilfsmittel'] || entry['Digitales_Hilfsmittel'] || '').trim();
 
-        if (!thema && !fach && !klasse && !kompetenz && !niveau && !tool && !beschreibung) return;
+        if (!thema && !fach && !ausbildungsform && !kompetenz && !niveau && !tool && !beschreibung) return;
 
         const normalized = {
             topic: thema || '(Ohne Thema)',
             subject: fach,
-            grade: klasse,
+            grade: ausbildungsform,
             competence: kompetenz,
             level: niveau,
             tool: tool,
@@ -3019,7 +3019,7 @@ function showUnifiedImportDecisionDialog(newOnes, similarOnes, duplicateCount = 
                             </th>
                             <th style="padding:12px;">Thema</th>
                             <th style="padding:12px;width:38%;">Unterschied / Hinweis</th>
-                            <th style="padding:12px;font-size:13px;">Fach • Klasse • Kompetenz • Tool</th>
+                            <th style="padding:12px;font-size:13px;">Fach • Ausbildungsform • Kompetenz • Tool</th>
                         </tr>
                     </thead>
                     <tbody>
