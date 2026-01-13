@@ -17,6 +17,9 @@ const REPO_PATH = (() => {
     return 'https://matthiasklossmpz.github.io/lerndashboard/';
   }
 
+  if (pathname.includes('/lerndashboard-bs/')) { 
+    return 'https://matthiasklossmpz.github.io/lerndashboard-bs/'; }
+
   const parts = pathname.split('/').filter(p => p);
   const base = parts.length > 0 ? '/' + parts[0] + '/' : '/';
   return self.location.origin + base;
