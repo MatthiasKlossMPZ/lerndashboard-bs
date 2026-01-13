@@ -119,13 +119,22 @@ if (window.opener?.document.body.classList.contains('dark')) {
 }
 
 // Klassen befüllen
-const gradeSelect = document.getElementById('grade');
-for (let i = 1; i <= 13; i++) {
-  const opt = document.createElement('option');
-  opt.value = `Klasse ${i}`;
-  opt.textContent = `Klasse ${i}`;
-  gradeSelect.appendChild(opt);
-}
+const grades = [
+    "Berufsschule",
+    "Berufliches Gymnasium",
+    "Berufsvorbereitung",
+    "Fachoberschule",
+    "Fachschule",
+    "Höhere Berufsfachschule",
+    "offene Suche"   // ← bleibt als flexibles Freitext-Feld erhalten
+];
+
+// Füllen des Selects
+const gradeSelect = document.getElementById('grade');  // oder 'gradeFilter' in index.html
+grades.forEach(grade => {
+    const opt = new Option(grade, grade);
+    gradeSelect.add(opt);
+});
 
 // Fokus & Tastatur
 document.getElementById('topic').focus();
