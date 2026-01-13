@@ -165,11 +165,20 @@ document.addEventListener('DOMContentLoaded', () => {
         delete window.receivedData;
     }
 
-    // Klassen 1–13 füllen
-    for (let i = 1; i <= 13; i++) {
-        const opt = new Option(`Klasse ${i}`, `Klasse ${i}`);
+    // Klassen füllen
+const grades = [
+        "Berufsschule",
+        "Berufliches Gymnasium",
+        "Berufsvorbereitung",
+        "Fachoberschule",
+        "Fachschule",
+        "Höhere Berufsfachschule",
+        "offene Suche"
+    ];
+    grades.forEach(grade => {
+        const opt = new Option(grade, grade);
         document.getElementById('grade').add(opt);
-    }
+    });
 
     // Dark Mode übernehmen
     if (window.opener?.document.body.classList.contains('dark')) {
