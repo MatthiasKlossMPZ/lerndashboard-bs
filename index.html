@@ -1902,7 +1902,7 @@ document.getElementById('matrixPdfBtn')?.addEventListener('click', exportMatrixP
 function exportTemplate() {
     const template = [
         'Thema,Unterrichtsfach,Ausbildungsform,Kompetenzbereich,Niveaustufe,Digitales Hilfsmittel,Beschreibung',
-        'Beispiel: Klimawandel,Geografie,Berufsschule,Analysieren und Reflektieren,Niveaustufe 3,Google Earth,"Beschreibung des Einsatzes..."'
+        'Beispiel: Klimawandel,Agrarwirtschaft,Berufsschule,Analysieren und Reflektieren,Niveaustufe 3,Google Earth,"Beschreibung des Einsatzes..."'
     ].join('\n');
 
     const csvBlob = new Blob(['\uFEFF' + template], { type: 'text/csv;charset=utf-8;' });
