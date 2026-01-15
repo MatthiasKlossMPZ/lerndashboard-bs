@@ -2244,7 +2244,7 @@ async function exportMatrixPDF() {
                           (!currentFilters.level || l === currentFilters.level);
 
             if (match) {
-                matrix[c][l].push(`${topic}\nAusbildungsform ${g}${r.tool ? ` – ${r.tool}` : ''}`);
+                matrix[c][l].push(`${topic}\n${g}${r.tool ? ` – ${r.tool}` : ''}`);
             }
         });
 
